@@ -51,17 +51,19 @@ $(document).ready(function () {
         var baimipeisu = parseInt((num3*100/num1*1.05)/60)+"分"+parseInt(num3*100/num1*1.05)%60;
         $('#tb_9').textbox('setValue',baimipeisu);
 
+        //<60，60～70，70～80，80～90，>90
+
         var qujian = num3*100/num1*1.05
-        if(qujian <= 90) {
+        if(swolf <= 60) {
             $('#tb_10').text('大神');
             $('#tb_10').css('background-color','green');
-        } else if(qujian <= 100) {
+        } else if(swolf <= 70) {
             $('#tb_10').text('优秀');
             $('#tb_10').css('background-color','yellow');
-        } else if(qujian <= 110) {
+        } else if(swolf <= 80) {
             $('#tb_10').text('良好');
             $('#tb_10').css('background-color','#ffab2e');
-        } else if(qujian <= 115) {
+        } else if(swolf <= 95) {
             $('#tb_10').text('及格');
             $('#tb_10').css('background-color','blue');
         } else {
