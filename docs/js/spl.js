@@ -63,7 +63,7 @@ $(document).ready(function () {
         } else if(swolf <= 80) {
             $('#tb_10').text('良好');
             $('#tb_10').css('background-color','#ffab2e');
-        } else if(swolf <= 95) {
+        } else if(swolf <= 90) {
             $('#tb_10').text('及格');
             $('#tb_10').css('background-color','blue');
         } else {
