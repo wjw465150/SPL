@@ -40,26 +40,26 @@ $(document).ready(function () {
     });
 
     $('#btn_SPL').bind('click', function () {
-        var num1 = $('#tb_1').numberbox('getValue');
-        var num2 = $('#tb_2').numberbox('getValue');
-        var huaju = keepTwoDecimalFull((num1 - 5) / num2);
+        var num1 = $('#tb_1').numberbox('getValue');  //池长
+        var num2 = $('#tb_2').numberbox('getValue');  //划次
+        var huaju = keepTwoDecimalFull((num1 - 5) / num2);  //划距
 
-        var num3 = $('#tb_3').numberbox('getValue');
-        var jiepai = keepTwoDecimalFull((num3 - 3) / num2);
+        var num3 = $('#tb_3').numberbox('getValue');  //用时
+        var jiepai = keepTwoDecimalFull((num3 - 3) / num2);  //节拍
 
         $('#tb_4').textbox('setValue', huaju);
         $('#tb_5').textbox('setValue', jiepai);
 
-        var huashuilu = Math.round(60 / jiepai);
+        var huashuilu = Math.round(60 / jiepai);  //划水率
         $('#tb_6').textbox('setValue', huashuilu);
 
-        var swolf = num2 * 1 + num3 * 1;
+        var swolf = num2 * 1 + num3 * 1;  //高尔夫指数
         $('#tb_7').textbox('setValue', swolf);
 
-        var yousu = keepTwoDecimalFull(num1 / num3);
+        var yousu = keepTwoDecimalFull(num1 / num3);  //游速
         $('#tb_8').textbox('setValue', yousu);
 
-        var baimipeisu = parseInt((num3 * 100 / num1 * 1.05) / 60) + "分" + parseInt(num3 * 100 / num1 * 1.05) % 60 + "秒";
+        var baimipeisu = parseInt((num3 * 100 / num1 * 1.05) / 60) + "分" + parseInt(num3 * 100 / num1 * 1.05) % 60 + "秒";  //百米配速
         $('#tb_9').textbox('setValue', baimipeisu);
 
         //顶尖、高手、优秀、中级、合格、菜鸟
@@ -93,20 +93,20 @@ $(document).ready(function () {
     });
 
     $('#btn_HC').bind('click', function () {
-        var num1 = $('#tb_21').numberbox('getValue');
-        var num2 = $('#tb_22').numberbox('getValue');
-        var num3 = $('#tb_23').numberbox('getValue');
+        var num1 = $('#tb_21').numberbox('getValue');  //池长
+        var num2 = $('#tb_22').numberbox('getValue');  //身高
+        var num3 = $('#tb_23').numberbox('getValue');  //用时
 
-        var huaciqujian = parseInt(((num1 - 5) / num2) / 0.55) + " 到 " + Math.round(((num1 - 5) / num2) / 0.7);
+        var huaciqujian = parseInt(((num1 - 5) / num2) / 0.55) + " 到 " + Math.round(((num1 - 5) / num2) / 0.7);  //划次区间
         $('#tb_31').textbox('setValue', huaciqujian);
 
-        var huaciHJ = keepTwoDecimalFull(num2 * 0.55) + " 到 " + keepTwoDecimalFull(num2 * 0.7);
-        $('#tb_32').textbox('setValue', huaciHJ);
+        var helihuaju = keepTwoDecimalFull(num2 * 0.55) + " 到 " + keepTwoDecimalFull(num2 * 0.7);  //合理划距
+        $('#tb_32').textbox('setValue', helihuaju);
 
-        var hc_1 = parseInt(((num1 - 5) / num2) / 0.55);
-        var hc_2 = Math.round(((num1 - 5) / num2) / 0.7);
+        var hc_1 = parseInt(((num1 - 5) / num2) / 0.55);  //划次区间1
+        var hc_2 = Math.round(((num1 - 5) / num2) / 0.7); //划次区间2
 
-        var jiepaifanwei = keepTwoDecimalFull((num3 - 3) / hc_1) + " 到 " + keepTwoDecimalFull((num3 - 3) / hc_2);
+        var jiepaifanwei = keepTwoDecimalFull((num3 - 3) / hc_1) + " 到 " + keepTwoDecimalFull((num3 - 3) / hc_2);  //所需节拍
         $('#tb_33').textbox('setValue', jiepaifanwei);
     });
 });
