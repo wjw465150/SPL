@@ -20,8 +20,7 @@ function keepTwoDecimalFull(num) {
 
 $(document).ready(function () {
     $('#mainPanel').panel({
-        closable: false,
-        footer:'#ft'
+        closable: false
     });
 
 
@@ -52,24 +51,48 @@ $(document).ready(function () {
         //<60，60～70，70～80， 80～90， 90～100 , >100
         if(swolf <= 60) {
             $('#tb_10').text('顶尖');
+            $('#tb_10').css('color','white');
             $('#tb_10').css('background-color','green');
         } else if(swolf <= 70) {
             $('#tb_10').text('高手');
+            $('#tb_10').css('color','black');
             $('#tb_10').css('background-color','yellow');
         } else if(swolf <= 80) {
             $('#tb_10').text('优秀');
+            $('#tb_10').css('color','black');
             $('#tb_10').css('background-color','#ffab2e');
         } else if(swolf <= 90) {
             $('#tb_10').text('中级');
+            $('#tb_10').css('color','white');
             $('#tb_10').css('background-color','blue');
         } else if(swolf <= 100) {
             $('#tb_10').text('合格');
+            $('#tb_10').css('color','black');
             $('#tb_10').css('background-color','#ffa8a8');
         } else {
             $('#tb_10').text('菜鸟');
+            $('#tb_10').css('color','white');
             $('#tb_10').css('background-color','red');
         }
 
+    });
+
+    $('#btn_HC').bind('click', function () {
+        var num1=$('#tb_21').numberbox('getValue');
+        var num2=$('#tb_22').numberbox('getValue');
+        var num3=$('#tb_23').numberbox('getValue');
+
+        var huaciqujian = parseInt(((num1-5)/num2)/0.55)+ " 到 "+Math.round(((num1-5)/num2)/0.7);
+        $('#tb_31').textbox('setValue',huaciqujian);
+
+        var huaciHJ = keepTwoDecimalFull(num2*0.55)+ " 到 "+keepTwoDecimalFull(num2*0.7);
+        $('#tb_32').textbox('setValue',huaciHJ);
+
+        var hc_1 = parseInt(((num1-5)/num2)/0.55);
+        var hc_2 = Math.round(((num1-5)/num2)/0.7);
+
+        var jiepaifanwei = keepTwoDecimalFull((num3-3)/hc_1)+ " 到 "+keepTwoDecimalFull((num3-3)/hc_2);
+        $('#tb_33').textbox('setValue',jiepaifanwei);
     });
 });
 
