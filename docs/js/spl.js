@@ -64,30 +64,31 @@ $(document).ready(function () {
 
         //顶尖、高手、优秀、中级、合格、菜鸟
         //<60，60～70，70～80， 80～90， 90～100 , >100
+        var tb_10 = $('#tb_10');
         if (swolf <= 60) {
-            $('#tb_10').text('顶尖');
-            $('#tb_10').css('color', 'white');
-            $('#tb_10').css('background-color', 'green');
+            tb_10.text('顶尖');
+            tb_10.css('color', 'white');
+            tb_10.css('background-color', 'green');
         } else if (swolf <= 70) {
-            $('#tb_10').text('高手');
-            $('#tb_10').css('color', 'black');
-            $('#tb_10').css('background-color', 'yellow');
+            tb_10.text('高手');
+            tb_10.css('color', 'black');
+            tb_10.css('background-color', 'yellow');
         } else if (swolf <= 80) {
-            $('#tb_10').text('优秀');
-            $('#tb_10').css('color', 'black');
-            $('#tb_10').css('background-color', '#ffab2e');
+            tb_10.text('优秀');
+            tb_10.css('color', 'black');
+            tb_10.css('background-color', '#ffab2e');
         } else if (swolf <= 90) {
-            $('#tb_10').text('中级');
-            $('#tb_10').css('color', 'white');
-            $('#tb_10').css('background-color', 'blue');
+            tb_10.text('中级');
+            tb_10.css('color', 'white');
+            tb_10.css('background-color', 'blue');
         } else if (swolf <= 100) {
-            $('#tb_10').text('合格');
-            $('#tb_10').css('color', 'black');
-            $('#tb_10').css('background-color', '#ffa8a8');
+            tb_10.text('合格');
+            tb_10.css('color', 'black');
+            tb_10.css('background-color', '#ffa8a8');
         } else {
-            $('#tb_10').text('菜鸟');
-            $('#tb_10').css('color', 'white');
-            $('#tb_10').css('background-color', 'red');
+            tb_10.text('菜鸟');
+            tb_10.css('color', 'white');
+            tb_10.css('background-color', 'red');
         }
 
     });
