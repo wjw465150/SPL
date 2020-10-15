@@ -20,30 +20,30 @@
 <body>
 <div class="easyui-tabs" data-options="fit:true,border:false,tabWidth:200,tabHeight:35">
     <div title="自由泳技术水平评价表" style="padding:10px">
-        <div class="easyui-panel" id="mainPanel" title="【自由泳技术水平评价表】" style="padding:10px" data-options="footer:'#ft1'">
-            <div style="padding:10px 20px 20px 20px">
-                <div style="margin-bottom:20px">
-                    <div>池长(最长50米):</div>
-                    <input class="easyui-numberbox" type="text" id="tb_1" value="50" data-options="required:true" style="width:100%;height:32px"></input>
-                </div>
+        <div class="easyui-panel" id="mainPanel" title="【自由泳技术水平评价表】" style="padding:10px; width:100%"">
+            <header><strong>注：此表基于蹬壁距离为5米，用时3秒。</strong></header>
 
-                <div style="margin-bottom:20px">
-                    <div>划次(双臂划次):</div>
-                    <input class="easyui-numberbox" type="text" id="tb_2" value="36" data-options="required:true" style="width:100%;height:32px"></input>
+            <div style="margin-bottom:20px">
+                <div>池长(最长50米):</div>
+                <input class="easyui-numberbox" type="text" id="tb_1" value="50" data-options="required:true" style="width:100%;height:32px"></input>
+            </div>
 
-                </div>
-                <div style="margin-bottom:10px">
-                    <div>用时(秒):</div>
-                    <input class="easyui-numberbox" type="text" id="tb_3" value="50" data-options="required:true" style="width:100%;height:32px"></input>
-
-                </div>
-
-                <div style="text-align:center;padding:5px">
-                    <a id="btn_SPL" href="#" class="easyui-linkbutton" style="width:100%;height:32px">计 算</a>
-                </div>
+            <div style="margin-bottom:20px">
+                <div>划次(双臂划次):</div>
+                <input class="easyui-numberbox" type="text" id="tb_2" value="36" data-options="required:true" style="width:100%;height:32px"></input>
 
             </div>
-            <div class="easyui-panel" title="计算结果 " style="padding:10px 20px 20px 20px;background: #ffab2e;">
+            <div style="margin-bottom:10px">
+                <div>用时(秒):</div>
+                <input class="easyui-numberbox" type="text" id="tb_3" value="50" data-options="required:true" style="width:100%;height:32px"></input>
+
+            </div>
+
+            <div style="text-align:center;padding:5px">
+                <a id="btn_SPL" href="#" class="easyui-linkbutton" style="width:100%;height:32px">计 算</a>
+            </div>
+            <p></p>
+            <div class="easyui-panel" title="计算结果 " style="background: #ffab2e" data-options="fit:true">
                 <table cellpadding="5">
                     <tr>
                         <td>划距:</td>
@@ -76,39 +76,34 @@
                 </table>
             </div>
         </div>
-        <div id="ft1" style="padding:5px;">
-            <strong>注：此表基于蹬壁距离为5米，用时3秒。</strong>
-        </div>
     </div>
     <div title="合理划次计算" style="padding:10px">
-        <div class="easyui-panel" id="secondPanel" title="【合理划次计算】" style="padding:10px" data-options="footer:'#ft2'">
-            <div style="padding:10px 20px 20px 20px">
-                <div style="margin-bottom:20px">
-                    <div>池长(最长50米):</div>
-                    <input class="easyui-numberbox" type="text" id="tb_21" value="50" data-options="required:true" style="width:100%;height:32px"></input>
-                </div>
-
-                <div style="margin-bottom:20px">
-                    <div>身高(米):</div>
-                    <input class="easyui-numberbox" type="text" id="tb_22" value="1.8" data-options="required:true, min:0,precision:2" style="width:100%;height:32px"></input>
-
-                </div>
-                <div style="margin-bottom:10px">
-                    <div>用时(秒):</div>
-                    <input class="easyui-numberbox" type="text" id="tb_23" value="50" data-options="required:true" style="width:100%;height:32px"></input>
-
-                </div>
-
-                <div style="text-align:center;padding:5px">
-                    <a id="btn_HC" href="#" class="easyui-linkbutton" style="width:100%;height:32px">计 算</a>
-                </div>
-
-            </div>
-            <div id="ft2" style="padding:5px;">
+        <div class="easyui-panel" id="secondPanel" title="【合理划次计算】" style="padding:10px; width:100%">
+            <header>
                 <strong>注：根据身高，而得出的合理划次区间</strong>
+            </header>
+
+            <div style="margin-bottom:20px">
+                <div>池长(最长50米):</div>
+                <input class="easyui-numberbox" type="text" id="tb_21" value="50" data-options="required:true" style="width:100%;height:32px"></input>
             </div>
 
-            <div class="easyui-panel" title="计算结果 " style="padding:10px 20px 20px 20px;background: #ffab2e;">
+            <div style="margin-bottom:20px">
+                <div>身高(米):</div>
+                <input class="easyui-numberbox" type="text" id="tb_22" value="1.8" data-options="required:true, min:0,precision:2" style="width:100%;height:32px"></input>
+
+            </div>
+            <div style="margin-bottom:10px">
+                <div>用时(秒):</div>
+                <input class="easyui-numberbox" type="text" id="tb_23" value="50" data-options="required:true" style="width:100%;height:32px"></input>
+
+            </div>
+
+            <div style="text-align:center;padding:5px">
+                <a id="btn_HC" href="#" class="easyui-linkbutton" style="width:100%;height:32px">计 算</a>
+            </div>
+            <p></p>
+            <div class="easyui-panel" title="计算结果 " style="background: #ffab2e;" data-options="fit:true">
                 <table cellpadding="5">
                     <tr>
                         <td>合理划次(双臂划次):</td>
@@ -127,11 +122,6 @@
         </div>
     </div>
 </div>
-<style scoped>
-    p{
-        line-height:150%;
-    }
-</style>
 
 </body>
 </html>
