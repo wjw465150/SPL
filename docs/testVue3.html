@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="js/element-ui/lib/theme-chalk/index.css">
+    <!-- import Vue before Element -->
+    <script src="js/element-ui/vue.min.js"></script>
+    <!-- import JavaScript -->
+    <script src="js/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+    <strong>注：根据身高，而得出的合理划次区间。</strong>
+    <p/>
+    <div>
+        <el-input placeholder="请输入内容" v-model.number="input1" type="number" minlength="1" maxlength="3"
+                  show-word-limit>
+            <template slot="prepend">池长(最长50米):</template>
+        </el-input>
+        <div style="margin: 10px 0;"></div>
+        <el-input placeholder="请输入内容" v-model.number="input2" type="number" minlength="1" maxlength="3"
+                  show-word-limit>
+            <template slot="prepend">身高(米):</template>
+        </el-input>
+        <div style="margin: 10px 0;"></div>
+        <el-input placeholder="请输入内容" v-model.number="input3" type="number" minlength="1" maxlength="3"
+                  show-word-limit>
+            <template slot="prepend">用时(秒):</template>
+        </el-input>
+
+        <div style="margin: 10px 0;"></div>
+        <el-button type="primary" style="width: 100%" @click="handleClick1">计 算</el-button>
+
+        <div style="margin: 40px 0;"></div>
+        <el-input v-model="input4" :disabled="true">
+            <template slot="prepend">合理划次(双臂划次):</template>
+        </el-input>
+        <el-input v-model="input5" :disabled="true">
+            <template slot="prepend">合理划距(米/划):</template>
+        </el-input>
+        <el-input v-model="input6" :disabled="true">
+            <template slot="prepend">所需节拍(秒):</template>
+        </el-input>
+    </div>
+</div>
+</body>
+<style>
+    html, body, #app {
+        height: 100%;
+    }
+</style>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            input1: 50,
+            input2: 1.8,
+            input3: 50,
+            input4: "35 到 45",
+            input5: "0.99 到 1.26",
+            input6: "1.04 到 1.31"
+        },
+        methods: {
+            handleClick1() {
+                var huaciqujian = parseInt(((this.input1 - 5) / this.input2) / 0.7) + " 到 " + Math.round(((this.input1 - 5) / this.input2) / 0.55);  //划次区间
+                this.input4 = huaciqujian;
+
+                var helihuaju = (this.input2 * 0.55).toFixed(2) + " 到 " + (this.input2 * 0.7).toFixed(2);  //合理划距
+                this.input5 = helihuaju;
+
+                var hc_1 = parseInt(((this.input1 - 5) / this.input2) / 0.55);  //划次区间1
+                var hc_2 = Math.round(((this.input1 - 5) / this.input2) / 0.7); //划次区间2
+                var jiepaifanwei = ((this.input3 - 3) / hc_1).toFixed(2) + " 到 " + ((this.input3 - 3) / hc_2).toFixed(2);  //所需节拍
+                this.input6 = jiepaifanwei
+            }
+        }
+    })
+</script>
+</html>

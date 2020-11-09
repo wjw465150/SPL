@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>自由泳效率计算表</title>
     <!-- import CSS -->
     <link rel="stylesheet" href="js/element-ui/lib/theme-chalk/index.css">
     <!-- import Vue before Element -->
@@ -11,19 +12,24 @@
 </head>
 <body>
 <div id="app">
-    <el-tabs v-model="activeName" type="border-card" :stretch=true :tab-position="tabPosition" id="ddd">
-        <el-tab-pane label="自由泳技术水平评价表" name="first">
-            <strong>注：此表基于蹬壁距离为5米，用时3秒。</strong><p/>
+    <el-tabs v-model="activeName" type="card" :stretch="stretch" :tab-position="tabPosition" id="ddd">
+        <el-tab-pane name="first">
+            <span slot="label"><i class="el-icon-goods"></i>技术水平</span>
+            <strong>注：此表基于蹬壁距离为5米，用时3秒。</strong>
+            <p/>
             <div>
-                <el-input placeholder="请输入内容" v-model.number="input1" type="number" minlength="1" maxlength="3" show-word-limit>
+                <el-input placeholder="请输入内容" v-model.number="input1" type="number" minlength="1" maxlength="3"
+                          show-word-limit>
                     <template slot="prepend">池长(最长50米):</template>
                 </el-input>
                 <div style="margin: 10px 0;"></div>
-                <el-input placeholder="请输入内容" v-model.number="input2" type="number" minlength="1" maxlength="3" show-word-limit>
+                <el-input placeholder="请输入内容" v-model.number="input2" type="number" minlength="1" maxlength="3"
+                          show-word-limit>
                     <template slot="prepend">划次(双臂划次):</template>
                 </el-input>
                 <div style="margin: 10px 0;"></div>
-                <el-input placeholder="请输入内容" v-model.number="input3" type="number" minlength="1" maxlength="3" show-word-limit>
+                <el-input placeholder="请输入内容" v-model.number="input3" type="number" minlength="1" maxlength="3"
+                          show-word-limit>
                     <template slot="prepend">用时(秒):</template>
                 </el-input>
 
@@ -32,23 +38,23 @@
 
                 <div style="margin: 40px 0;"></div>
                 <el-input v-model="input4" :disabled="true">
-                    <template slot="prepend">划  距:</template>
+                    <template slot="prepend">划 距:</template>
                     <template slot="append">米/划</template>
                 </el-input>
                 <el-input v-model="input5" :disabled="true">
-                    <template slot="prepend">节  拍:</template>
+                    <template slot="prepend">节 拍:</template>
                     <template slot="append">秒</template>
                 </el-input>
                 <el-input v-model="input6" :disabled="true">
-                    <template slot="prepend">划水率:  </template>
+                    <template slot="prepend">划水率:</template>
                     <template slot="append">划/分钟</template>
                 </el-input>
                 <el-input v-model="input7" :disabled="true">
-                    <template slot="prepend">SWOLF: </template>
+                    <template slot="prepend">SWOLF:</template>
                     <template slot="append">游泳指数</template>
                 </el-input>
                 <el-input v-model="input8" :disabled="true">
-                    <template slot="prepend">游  速:</template>
+                    <template slot="prepend">游 速:</template>
                     <template slot="append">米/秒</template>
                 </el-input>
                 <el-input v-model="input9" :disabled="true">
@@ -56,18 +62,27 @@
                     <template slot="append">分:秒</template>
                 </el-input>
                 <div style="margin: 20px 0;"></div>
-                技术评价: <el-tag :type="swtype">{{input10}}</el-tag>
+                技术评价:
+                <el-tag :type="swtype">{{input10}}</el-tag>
             </div>
         </el-tab-pane>
-        <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+        <el-tab-pane name="second" style="height: 700px;">
+            <span slot="label"><i class="el-icon-user"></i>合理划次</span>
+            <iframe :src="src2" style="width: 100%;height: 100%" frameborder="0" scrolling="no"></iframe>
+        </el-tab-pane>
+        <el-tab-pane name="third" style="height: 700px;">
+            <span slot="label"><i class="el-icon-s-promotion"></i>百米配速</span>
+            <iframe :src="src3" style="width: 100%;height: 100%" frameborder="0" scrolling="no"></iframe>
+        </el-tab-pane>
     </el-tabs>
 </div>
 </body>
 <style>
-    html,body,#app{
+    html, body, #app {
         height: 100%;
     }
-    #ddd{
+
+    #ddd {
         height: 98%;
     }
 </style>
@@ -78,6 +93,7 @@
         data: {
             activeName: 'first',
             tabPosition: 'top',
+            stretch: true,
             input1: 50,
             input2: 36,
             input3: 50,
@@ -88,7 +104,9 @@
             input8: "1.00",
             input9: "1分45秒",
             input10: "中级",
-            swtype: "warning"
+            swtype: "warning",
+            src2: "testVue3.html",
+            src3: "testVue3.html"
         },
         methods: {
             handleClick1() {
@@ -96,8 +114,8 @@
                 this.input5 = ((this.input3 - 3) / this.input2).toFixed(2);  //节拍
                 this.input6 = Math.round(60 / this.input5);  //划水率
 
-                this.input7 = this.input2 + this.input3;  //高尔夫指数
-                this.input8  = (this.input1 / this.input3).toFixed(2);  //游速
+                this.input7 = 1 * this.input2 + 1 * this.input3;  //高尔夫指数
+                this.input8 = (this.input1 / this.input3).toFixed(2);  //游速
                 this.input9 = parseInt((this.input3 * 100 / this.input1 * 1.05) / 60) + "分" + parseInt(this.input3 * 100 / this.input1 * 1.05) % 60 + "秒";  //百米配速
 
                 //顶尖、高手、优秀、中级、合格、菜鸟
