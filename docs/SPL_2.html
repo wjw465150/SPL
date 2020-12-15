@@ -14,17 +14,17 @@
     <strong>注：根据身高，而得出的合理划次区间。</strong>
     <p/>
     <div>
-        <el-input placeholder="请输入内容" v-model.number="input1" type="number" minlength="1" maxlength="3"
+        <el-input ref="input1" placeholder="请输入内容" v-model.number="input1" type="number" minlength="1" maxlength="3"
                   show-word-limit>
             <template slot="prepend">池长(最长50米):</template>
         </el-input>
         <div style="margin: 10px 0;"></div>
-        <el-input placeholder="请输入内容" v-model.number="input2" type="number" minlength="1" maxlength="3"
+        <el-input ref="input2" placeholder="请输入内容" v-model.number="input2" type="number" minlength="1" maxlength="3"
                   show-word-limit>
             <template slot="prepend">身高(米):</template>
         </el-input>
         <div style="margin: 10px 0;"></div>
-        <el-input placeholder="请输入内容" v-model.number="input3" type="number" minlength="1" maxlength="3"
+        <el-input ref="input3" placeholder="请输入内容" v-model.number="input3" type="number" minlength="1" maxlength="3"
                   show-word-limit>
             <template slot="prepend">用时(秒):</template>
         </el-input>

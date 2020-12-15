@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>自由泳效率计算表</title>
     <!-- import CSS -->
     <link rel="stylesheet" href="js/element-ui/lib/theme-chalk/index.css">
     <!-- import Vue before Element -->
@@ -15,17 +14,17 @@
     <strong>注：此表基于蹬壁距离为5米，用时3秒。</strong>
     <p/>
     <div>
-        <el-input placeholder="请输入内容" v-model.number="input1" type="number" minlength="1" maxlength="3"
-                  show-word-limit>
+        <el-input ref="input1" placeholder="请输入内容" v-model.number="input1" type="number" minlength="1" maxlength="3"
+                  show-word-limit v-on:blur="valid1">
             <template slot="prepend">池长(最长50米):</template>
         </el-input>
         <div style="margin: 10px 0;"></div>
-        <el-input placeholder="请输入内容" v-model.number="input2" type="number" minlength="1" maxlength="3"
+        <el-input ref="input2" placeholder="请输入内容" v-model.number="input2" type="number" minlength="1" maxlength="3"
                   show-word-limit>
             <template slot="prepend">划次(双臂划次):</template>
         </el-input>
         <div style="margin: 10px 0;"></div>
-        <el-input placeholder="请输入内容" v-model.number="input3" type="number" minlength="1" maxlength="3"
+        <el-input ref="input3" placeholder="请输入内容" v-model.number="input3" type="number" minlength="1" maxlength="3"
                   show-word-limit>
             <template slot="prepend">用时(秒):</template>
         </el-input>
@@ -47,7 +46,7 @@
             <template slot="append">划/分钟</template>
         </el-input>
         <el-input v-model="input7" :disabled="true">
-            <template slot="prepend">SWOLF:</template>
+            <template slot="prepend">SWOLF(用时+双臂划次):</template>
             <template slot="append">游泳指数</template>
         </el-input>
         <el-input v-model="input8" :disabled="true">
@@ -87,6 +86,15 @@
             swtype: "warning"
         },
         methods: {
+            valid1() {
+                if(this.input1>50) {
+                    this.input1 = 50;
+                    this.$alert('泳池长度不能大于50米!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.$refs.input1.focus()
+                }
+            },
             handleClick1() {
                 this.input4 = ((this.input1 - 5) / this.input2).toFixed(2);  //划距
                 this.input5 = ((this.input3 - 3) / this.input2).toFixed(2);  //节拍
