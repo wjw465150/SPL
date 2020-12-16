@@ -96,6 +96,7 @@
 
                 let zjmiao = this.input2 * 60 + this.input3 * 1  //换算成总计多少秒
                 let baimipeisu = parseInt((zjmiao * 100 / this.input1) / 60) + "分" + parseInt(zjmiao * 100 / this.input1) % 60 + "秒"; //百米配速
+                this.input4 = baimipeisu
 
                 //大神,优秀,良好,及格,菜鸟
                 let PS = ((zjmiao * 100 / this.input1) / 60).toFixed(2)+parseInt(zjmiao * 100 / this.input1) % 60;
@@ -117,7 +118,7 @@
                     jishupinjia = '菜鸟';
                     this.rate = 1;
                 }
-                this.input5 = baimipeisu
+                this.input5 = jishupinjia
 
             }
         }
