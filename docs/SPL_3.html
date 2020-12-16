@@ -39,6 +39,13 @@
         <el-input v-model="input5" :disabled="true">
             <template slot="prepend">游泳水平:</template>
         </el-input>
+        <el-rate
+                v-model="rate"
+                disabled
+                text-color="#ff9900"
+        >
+        </el-rate>
+
     </div>
 </div>
 </body>
@@ -56,10 +63,61 @@
             input2: 20,
             input3: 0,
             input4: "2分0秒",
-            input5: "及格"
+            input5: "及格",
+            rate: 3
         },
         methods: {
             handleClick1() {
+                if (this.input1 < 10) {
+                    this.$alert('游泳距离输入错误!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.input1 = 50;
+                    this.$refs.input1.focus()
+
+                    return false;
+                }
+                if (this.input2 < 0) {
+                    this.$alert('游泳用时输入错误!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.input2 = 20;
+                    this.$refs.input2.focus()
+                    return false;
+                }
+                if (this.input3 < 0 || this.input3 > 59) {
+                    this.$alert('游泳用时输入错误!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.input3 = 20;
+                    this.$refs.input3.focus()
+                    return false;
+                }
+
+                let zjmiao = this.input2 * 60 + this.input3 * 1  //换算成总计多少秒
+                let baimipeisu = parseInt((zjmiao * 100 / this.input1) / 60) + "分" + parseInt(zjmiao * 100 / this.input1) % 60 + "秒"; //百米配速
+
+                //大神,优秀,良好,及格,菜鸟
+                let PS = ((zjmiao * 100 / this.input1) / 60).toFixed(2)+parseInt(zjmiao * 100 / this.input1) % 60;
+                //console.log(PS)
+                let jishupinjia = '及格'
+                if (PS <= 1.61) {
+                    jishupinjia = '大神';
+                    this.rate = 5;
+                } else if (PS <= 1.71) {
+                    jishupinjia = '优秀';
+                    this.rate = 4;
+                } else if (PS <= 1.81) {
+                    jishupinjia = '良好';
+                    this.rate = 3.5;
+                } else if (PS <= 2.0) {
+                    jishupinjia = '及格';
+                    this.rate = 3;
+                } else {
+                    jishupinjia = '菜鸟';
+                    this.rate = 1;
+                }
+                this.input5 = jishupinjia
 
             }
         }

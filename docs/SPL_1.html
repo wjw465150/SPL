@@ -60,6 +60,12 @@
         <div style="margin: 20px 0;"></div>
         技术评价:
         <el-tag :type="swtype">{{input10}}</el-tag>
+        <el-rate
+                v-model="rate"
+                disabled
+                text-color="#ff9900"
+                >
+        </el-rate>
     </div>
 </div>
 </body>
@@ -83,7 +89,8 @@
             input8: "1.00",
             input9: "1分45秒",
             input10: "中级",
-            swtype: "warning"
+            swtype: "success",
+            rate: 3
         },
         methods: {
             valid1() {
@@ -96,11 +103,45 @@
                 }
             },
             handleClick1() {
+                if(this.input1 > 50 || this.input1 < 10) {
+                    this.$alert('泳池长度设置错误!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.input1 = 50;
+                    this.$refs.input1.focus()
+
+                    return false;
+                }
+                if(this.input2 > 100 || this.input2 < 1) {
+                    this.$alert('双臂划次输入错误!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.input2 = 50;
+                    this.$refs.input2.focus()
+
+                    return false;
+                }
+                if(this.input3 > 200 || this.input3 < 1) {
+                    this.$alert('用时输入错误!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.input3 = 50;
+                    this.$refs.input3.focus()
+
+                    return false;
+                }
+
                 this.input4 = ((this.input1 - 5) / this.input2).toFixed(2);  //划距
                 this.input5 = ((this.input3 - 3) / this.input2).toFixed(2);  //节拍
                 this.input6 = Math.round(60 / this.input5);  //划水率
 
                 this.input7 = 1 * this.input2 + 1 * this.input3;  //高尔夫指数
+                if(this.input1 == 25) {
+                    let swolf = (1 * this.input2 + 1 * this.input3)*2*1.05
+                    this.input7  = Math.ceil(swolf)
+                }
+
+
                 this.input8 = (this.input1 / this.input3).toFixed(2);  //游速
                 this.input9 = parseInt((this.input3 * 100 / this.input1 * 1.05) / 60) + "分" + parseInt(this.input3 * 100 / this.input1 * 1.05) % 60 + "秒";  //百米配速
 

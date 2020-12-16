@@ -64,6 +64,34 @@
         },
         methods: {
             handleClick1() {
+                if(this.input1 > 50 || this.input1 < 10) {
+                    this.$alert('泳池长度设置错误!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.input1 = 50;
+                    this.$refs.input1.focus()
+
+                    return false;
+                }
+                if(this.input2 > 3 || this.input2 < 1) {
+                    this.$alert('身高输入错误!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.input2 = 1.8;
+                    this.$refs.input2.focus()
+
+                    return false;
+                }
+                if(this.input3 > 200 || this.input3 < 1) {
+                    this.$alert('用时输入错误!', '警告', {
+                        confirmButtonText: '确定',
+                    });
+                    this.input3 = 50;
+                    this.$refs.input3.focus()
+
+                    return false;
+                }
+
                 var huaciqujian = parseInt(((this.input1 - 5) / this.input2) / 0.7) + " 到 " + Math.round(((this.input1 - 5) / this.input2) / 0.55);  //划次区间
                 this.input4 = huaciqujian;
 
